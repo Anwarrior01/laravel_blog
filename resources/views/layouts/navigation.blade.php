@@ -20,6 +20,8 @@
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <a href="/blog" class="text-sm text-gray-100 bg-transparent border-2  mr-8 px-5 py-2 hover:text-gray-700 hover:bg-gray-100 transition duration-500">Blog</a>
+
                 @auth
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
