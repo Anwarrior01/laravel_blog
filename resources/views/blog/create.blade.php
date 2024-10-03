@@ -9,10 +9,10 @@
             @csrf
             <input type="text" name="title" placeholder="Title"
                 class="w-full h-20 text-4xl rounded-lg shadow-lg border-b p-16 mb-5">
-            <textarea name="" id="" cols="30" rows="10" name="description" placeholder="Post"
+            <textarea  id="" cols="30" rows="10" name="description" placeholder="Post"
                 class="w-full h-60 text-l rounded-lg shadow-lg border-b p-16 mb-5 mt-4"></textarea>
-            <div class="py-16 flex justify-center">
-                <button
+            <label class="py-16 flex justify-center">
+                <span
                     class="
                     text-gray-700 hover:text-white
                      bg-gray-400 hover:bg-gray-700
@@ -22,8 +22,8 @@
                   font-bold uppercase">
                     <span>Select an Image to Upload</span>
                     <input type="file" name="image" class="hidden">
-                </button>
-            </div>
+                </span>
+            </label>
 
             <a href=''
                 class="bg-gray-700 py-3 px-5 text-gray-100 rounded-lg uppercase text-lg place-self-start mt-4"><input
