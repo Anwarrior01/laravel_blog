@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Str;
+
 class PostsController extends Controller
 {
     /**
@@ -12,7 +14,7 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('blog.index')->with('posts',Post::orderBy('title','DESC')->get());
+        return view('blog.index')->with('posts', Post::orderBy('title', 'DESC')->get());
     }
 
     /**
@@ -28,7 +30,27 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate(
+            [
+                'title' => 'required',
+                'description' => 'required',
+                'image' => 'required|mimes:jpg,png,jpeg|max:5048'
+            ]
+        );
+        $slug = Str::slug($request->title, '-');
+        $newImageName = uniqid() . '-' . $request->title . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $newImageName);
+
+        Post::create(
+            [
+                'title' => $request->input('title'),
+                'description' => $request->input('description'),
+                'slug' => $slug,
+                'image_path' => $newImageName,
+                'user_id' => auth()->user()->id,
+            ]
+        );
+return redirect('/blog');
     }
 
     /**

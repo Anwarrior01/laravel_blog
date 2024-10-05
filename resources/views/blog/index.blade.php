@@ -13,7 +13,7 @@
     @foreach ($posts as $post)
         <div class="sm:grid grid-cols-2 gap-16 mx-auto py-16 px-5 border-b border-gray-300 ">
             <div class="flex">
-                <img class="object-cover" src="{{ $post->image_path }}" alt="">
+                <img class="object-cover" src="/images/{{ $post->image_path }}" alt="">
 
             </div>
             <div>
